@@ -1,0 +1,98 @@
+#include <OrbitOled.h>
+#include <OrbitOledChar.h>
+#include <OrbitOledGrph.h>
+
+#define OBSTACLE_LENGTH 16
+#define LONG_HURDLE_LENGTH 34
+#define RIVER_LENGTH 52
+#define CHARACTER_LENGTH 8
+#define HEIGHT 8
+
+//Bitmap definitions
+static char guyBmp[] = {
+  0b10000000,0b01011110,0b11110111,0b11111111,
+  0b11111111,0b11110111,0b01011110,0b10000000,
+
+  0b00000001,0b00000000,0b00011111,0b00000011,
+  0b00000011,0b00011111,0b00000000,0b00000001,
+};
+static char wallBmp[] = {
+  0b11111111,0b11111111,0b11111111,0b11111111,
+  0b11111111,0b11111111,0b11111111,0b11111111,
+  0b11111111,0b11111111,0b11111111,0b11111111,
+  0b11111111,0b11111111,0b11111111,0b11111111
+};
+static char hurdleBmp[] = {
+  0b11111111,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b11111111,
+};
+static char longHurdleBmp[] = {
+  0b11111111,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b00000001,
+
+  0b00000001,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b00000001,0b00000001,0b00000001,
+  0b00000001,0b11111111
+};
+static char riverBmp[] = {
+  0b11111011,0b11110111,0b11110111,0b11111011,
+  0b11111101,0b11011101,0b10111011,0b10110111,
+  0b11010111,0b11011011,0b10111111,0b10111111,
+  0b11011111,0b11101111,0b11110111,0b11110111,
+
+  0b11101111,0b11011111,0b11011011,0b10110111,
+  0b10110111,0b11011011,0b11111101,0b11111101,
+  0b11111101,0b11111011,0b11011011,0b10110111,
+  0b10111011,0b11011101,0b11101101,0b11101111,
+
+  0b11101111,0b11011111,0b10111111,0b10111111,
+  0b11011111,0b11011111,0b11101111,0b11101101,
+  0b11011011,0b10111011,0b10111101,0b11011101,
+  0b11111011,0b11111011,0b11110111,0b11111011,
+  0b11111101,0b11111101,0b11111011,0b11111101
+};
+static char edgeBmp[] = {
+  0b11111111,0b11111111,0b11111111,0b11111111
+};
+
+
+//static objects
+void drawInitCharacter(){
+  OrbitOledMoveTo(64,19);
+  OrbitOledPutBmp(8, 16, guyBmp);
+}
+void drawEdge(){
+  OrbitOledMoveTo(40,0);
+  OrbitOledPutBmp(1, 32, edgeBmp);
+  OrbitOledMoveTo(95,0);
+  OrbitOledPutBmp(1, 32, edgeBmp);
+}
+
+//mobile objects(character + obstacles)
+void drawCharacter(int x_co, int y_co){
+  OrbitOledMoveTo(x_co,y_co);
+  OrbitOledSetDrawMode(modOledOr);
+  OrbitOledPutBmp(CHARACTER_LENGTH, 2*HEIGHT, guyBmp);
+}
+void drawWall(int x_co, int y_co){
+  OrbitOledMoveTo(x_co,y_co);
+  OrbitOledPutBmp(OBSTACLE_LENGTH, HEIGHT, wallBmp);
+}
+void drawHurdle(int x_co, int y_co){
+  OrbitOledMoveTo(x_co,y_co);
+  OrbitOledPutBmp(OBSTACLE_LENGTH, HEIGHT, hurdleBmp);
+}
+void drawLongHurdle(int x_co, int y_co){
+  OrbitOledMoveTo(x_co,y_co);
+  OrbitOledPutBmp(LONG_HURDLE_LENGTH, HEIGHT, longHurdleBmp);
+}
+void drawRiver(int x_co, int y_co){
+  OrbitOledMoveTo(x_co,y_co);
+  OrbitOledPutBmp(RIVER_LENGTH, HEIGHT, riverBmp);
+}
