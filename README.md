@@ -1,4 +1,4 @@
-# Run-Trevor
+# Jungle-Runner
 #Introduction
 Run Trevor is a runner game which I coded on Tiva C Series(TM4C123G) connected to the Orbit Booster Pack. My game makes use of most of the elements on the boosterpack, including the accelerometer and buttons for movement, and the LCD screen for hand-drawn bitmap graphics. 
 
