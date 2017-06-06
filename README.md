@@ -1,6 +1,6 @@
 # Jungle-Runner
 # Introduction
-Run Trevor is a runner game which I coded on Tiva C Series(TM4C123G) connected to the Orbit Booster Pack. My game makes use of most of the elements on the boosterpack, including the accelerometer and buttons for movement, and the LCD screen for hand-drawn bitmap graphics. 
+Jungle Runner is a runner game which I coded on Tiva C Series(TM4C123G) connected to the Orbit Booster Pack. My game makes use of most of the elements on the boosterpack, including the accelerometer and buttons for movement, and the LCD screen for hand-drawn bitmap graphics. 
 
 In order to run this program, I recommend using Energia on board selection tmc4c123g (80Mhz) and import the OLED library which is included in this repository. 
 
